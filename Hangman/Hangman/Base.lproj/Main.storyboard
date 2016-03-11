@@ -145,6 +145,7 @@
                     <connections>
                         <outlet property="guess" destination="u4t-fh-Pyg" id="pBr-PM-B05"/>
                         <outlet property="hangmanState" destination="K1E-PD-TIi" id="Uqo-sH-V6h"/>
+                        <outlet property="incorrectGuesses" destination="KYu-RS-P9z" id="4qN-s3-leW"/>
                         <outlet property="puzzle" destination="8tX-6l-8h6" id="QQf-6w-T6I"/>
                     </connections>
                 </viewController>
