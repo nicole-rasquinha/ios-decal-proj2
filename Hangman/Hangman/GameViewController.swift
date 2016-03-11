@@ -11,11 +11,15 @@ import UIKit
 class GameViewController: UIViewController {
 
     @IBOutlet var hangmanState:UIImageView!
+    var stateNum = 1
+    
     @IBOutlet var incorrectGuesses: UILabel!
     @IBOutlet var guess: UITextField!
+    
     @IBOutlet var puzzle: UILabel!
     var puzzleString: String = String()
     var phrase: String = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +57,14 @@ class GameViewController: UIViewController {
         incGuesses.appendContentsOf(" ")
         incGuesses.append(g)
         incorrectGuesses.text = incGuesses
+        guess.text = String()
+        
+        stateNum+=1
+        var name:String = "hangman"
+        name.appendContentsOf(stateNum.description)
+        name.appendContentsOf(".gif")
+        
+        hangmanState.image = UIImage(named: name)
     }
     
     override func didReceiveMemoryWarning() {
