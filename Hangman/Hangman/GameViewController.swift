@@ -10,6 +10,8 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet var hangmanState:UIImageView!
+    @IBOutlet var incorrectGuesses: UILabel!
     @IBOutlet var guess: UITextField!
     @IBOutlet var puzzle: UILabel!
     var puzzleString: String = String()
@@ -44,6 +46,15 @@ class GameViewController: UIViewController {
         }
         puzzle.text = puzzleString
     }
+    
+    @IBAction func incorrectGuess(sender: UIButton) {
+        let g: Character = guess.text![guess.text!.startIndex]
+        var incGuesses: String = incorrectGuesses.text!
+        incGuesses.appendContentsOf(" ")
+        incGuesses.append(g)
+        incorrectGuesses.text = incGuesses
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

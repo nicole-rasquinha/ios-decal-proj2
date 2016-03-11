@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Start Screen View Controller-->
@@ -84,6 +85,9 @@
                                 <rect key="frame" x="428" y="351" width="83" height="30"/>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="18"/>
                                 <state key="normal" title="Incorrect"/>
+                                <connections>
+                                    <action selector="incorrectGuess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LfQ-Mi-eui"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tX-6l-8h6">
                                 <rect key="frame" x="171" y="28" width="258" height="65"/>
@@ -98,30 +102,49 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K1E-PD-TIi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hangman1.gif" translatesAutoresizingMaskIntoConstraints="NO" id="K1E-PD-TIi">
                                 <rect key="frame" x="180" y="87" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="J2B-oO-GI4"/>
                                     <constraint firstAttribute="height" constant="240" id="TKP-8t-zEf"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYu-RS-P9z">
+                                <rect key="frame" x="48" y="394" width="463" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="463" id="pXS-xY-gBn"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Incorrect Guesses:">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="20" name="Papyrus"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94970804149999999" green="0.92111177779999998" blue="0.69749209450000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="K1E-PD-TIi" firstAttribute="top" secondItem="8tX-6l-8h6" secondAttribute="bottom" constant="-6" id="9bU-89-irR"/>
                             <constraint firstItem="u4t-fh-Pyg" firstAttribute="top" secondItem="K1E-PD-TIi" secondAttribute="bottom" constant="24" id="ByB-Hc-LJR"/>
+                            <constraint firstItem="K1E-PD-TIi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DfV-Zt-Vtb"/>
                             <constraint firstItem="u4t-fh-Pyg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E9E-RR-f6L"/>
                             <constraint firstItem="8tX-6l-8h6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fru-vK-JYd"/>
                             <constraint firstItem="zgg-Do-csh" firstAttribute="leading" secondItem="u4t-fh-Pyg" secondAttribute="trailing" constant="12" id="KKw-gI-ry8"/>
                             <constraint firstItem="jHX-3O-L4K" firstAttribute="top" secondItem="K1E-PD-TIi" secondAttribute="bottom" constant="24" id="L1Q-NS-ffp"/>
-                            <constraint firstItem="K1E-PD-TIi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O9c-7D-0DP"/>
                             <constraint firstItem="8tX-6l-8h6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="eTb-Rb-WFM"/>
+                            <constraint firstItem="KYu-RS-P9z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="28" id="gev-hp-iYO"/>
                             <constraint firstItem="jHX-3O-L4K" firstAttribute="leading" secondItem="zgg-Do-csh" secondAttribute="trailing" constant="8" id="wq7-vJ-64M"/>
+                            <constraint firstItem="KYu-RS-P9z" firstAttribute="top" secondItem="u4t-fh-Pyg" secondAttribute="bottom" constant="13" id="xth-0B-t7O"/>
                             <constraint firstItem="zgg-Do-csh" firstAttribute="top" secondItem="K1E-PD-TIi" secondAttribute="bottom" constant="24" id="yt5-gC-XK5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="guess" destination="u4t-fh-Pyg" id="pBr-PM-B05"/>
+                        <outlet property="hangmanState" destination="K1E-PD-TIi" id="Uqo-sH-V6h"/>
                         <outlet property="puzzle" destination="8tX-6l-8h6" id="QQf-6w-T6I"/>
                     </connections>
                 </viewController>
@@ -130,4 +153,7 @@
             <point key="canvasLocation" x="325" y="400"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hangman1.gif" width="100" height="100"/>
+    </resources>
 </document>
