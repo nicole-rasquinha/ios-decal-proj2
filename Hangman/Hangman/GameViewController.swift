@@ -18,15 +18,22 @@ class GameViewController: UIViewController {
     @IBOutlet var guess: UITextField!
     
     @IBOutlet var puzzle: UILabel!
-    var puzzleString: String = String()
+    var puzzleString: String!
     var phrase: String = String()
 
-    var isPlaying = true
+    var isPlaying: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        stateNum = 1
+        incorrectGuesses.text = "Incorrect Guesses:"
+        allGuesses.removeAll()
+        puzzleString = String()
+        isPlaying = true
+        
+        hangmanState.image = UIImage(named: "hangman1.gif")
         let hangmanPhrases = HangmanPhrases()
         phrase = hangmanPhrases.getRandomPhrase()!
         print(phrase)
@@ -43,8 +50,12 @@ class GameViewController: UIViewController {
         puzzle.text = puzzleString
     }
 
+    @IBAction func startOver(sender: UIButton) {
+        viewDidLoad()
+    }
     @IBAction func guess(sender: UIButton) {
         if !isPlaying {
+            gameOver()
             return
         }
         let s: String = guess.text!
@@ -93,6 +104,13 @@ class GameViewController: UIViewController {
     
     func lose() {
         let alert = UIAlertController(title: "You lost :(", message: "Click 'Start Over' to try again.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func gameOver() {
+        let alert = UIAlertController(title: "Game Over", message: "The game is over. Click 'Start Over' to play again.", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)

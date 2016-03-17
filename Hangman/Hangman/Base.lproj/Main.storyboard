@@ -65,8 +65,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4t-fh-Pyg">
-                                <rect key="frame" x="275" y="363" width="50" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4t-fh-Pyg">
+                                <rect key="frame" x="275" y="373" width="50" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="wAE-Cb-QPt"/>
                                 </constraints>
@@ -79,15 +79,15 @@
                                     <fragment content="GUESS">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="42" name="Papyrus"/>
+                                            <font key="NSFont" size="30" name="Papyrus"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hangman1.gif" translatesAutoresizingMaskIntoConstraints="NO" id="K1E-PD-TIi">
-                                <rect key="frame" x="180" y="99" width="240" height="240"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="hangman1.gif" translatesAutoresizingMaskIntoConstraints="NO" id="K1E-PD-TIi">
+                                <rect key="frame" x="180" y="109" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="J2B-oO-GI4"/>
                                     <constraint firstAttribute="height" constant="240" id="TKP-8t-zEf"/>
@@ -110,7 +110,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjn-ry-4c1">
-                                <rect key="frame" x="20" y="7" width="57" height="30"/>
+                                <rect key="frame" x="20" y="20" width="57" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="Vsz-3u-Bso"/>
                                 </constraints>
@@ -128,6 +128,17 @@
                                     <action selector="guess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V6j-D0-lgN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4Q-UG-XGp">
+                                <rect key="frame" x="467" y="20" width="113" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="qTw-1t-wAM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="23"/>
+                                <state key="normal" title="Start Over"/>
+                                <connections>
+                                    <action selector="startOver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nZ1-gc-NsE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94970804149999999" green="0.92111177779999998" blue="0.69749209450000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -136,11 +147,13 @@
                             <constraint firstItem="K1E-PD-TIi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DfV-Zt-Vtb"/>
                             <constraint firstItem="u4t-fh-Pyg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E9E-RR-f6L"/>
                             <constraint firstItem="8tX-6l-8h6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fru-vK-JYd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B4Q-UG-XGp" secondAttribute="trailing" id="Lwy-3G-5JR"/>
                             <constraint firstItem="5Zf-zC-NOo" firstAttribute="leading" secondItem="u4t-fh-Pyg" secondAttribute="trailing" constant="12" id="NV1-El-rbh"/>
-                            <constraint firstItem="8tX-6l-8h6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="eTb-Rb-WFM"/>
+                            <constraint firstItem="8tX-6l-8h6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="eTb-Rb-WFM"/>
                             <constraint firstItem="KYu-RS-P9z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="28" id="gev-hp-iYO"/>
                             <constraint firstItem="5Zf-zC-NOo" firstAttribute="top" secondItem="K1E-PD-TIi" secondAttribute="bottom" constant="25" id="joe-gU-d9m"/>
-                            <constraint firstItem="jjn-ry-4c1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-13" id="rJB-Wz-95Z"/>
+                            <constraint firstItem="B4Q-UG-XGp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lQp-6P-Q7B"/>
+                            <constraint firstItem="jjn-ry-4c1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rJB-Wz-95Z"/>
                             <constraint firstAttribute="leadingMargin" secondItem="jjn-ry-4c1" secondAttribute="leading" id="xl0-nQ-9at"/>
                             <constraint firstItem="KYu-RS-P9z" firstAttribute="top" secondItem="u4t-fh-Pyg" secondAttribute="bottom" constant="13" id="xth-0B-t7O"/>
                         </constraints>
