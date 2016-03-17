@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     var stateNum = 1
     
     @IBOutlet var incorrectGuesses: UILabel!
+    var allGuesses = [Character]()
     @IBOutlet var guess: UITextField!
     
     @IBOutlet var puzzle: UILabel!
@@ -40,19 +41,57 @@ class GameViewController: UIViewController {
         puzzle.text = puzzleString
     }
 
-    @IBAction func correctGuess(sender: UIButton) {
-        let g: Character = guess.text![guess.text!.startIndex]
+    @IBAction func guess(sender: UIButton) {
+        let s: String = guess.text!
+        if s.endIndex == s.startIndex {
+            error("You have not entered a guess.")
+        }
+        else if s.startIndex.distanceTo(s.endIndex) > 1 {
+            error("Must type just one character.")
+        }
+        else {
+            let gLower: Character = guess.text!.lowercaseString[guess.text!.startIndex]
+            let gUpper: Character = guess.text!.uppercaseString[guess.text!.startIndex]
+            
+            if allGuesses.indexOf(gLower) != nil {
+                error("You have already guessed this letter.")
+                return
+            }
+            
+            allGuesses.append(gLower)
+            allGuesses.append(gUpper)
+            if phrase.characters.indexOf(gLower) != nil {
+                correct(gLower)
+            }
+            else if phrase.characters.indexOf(gUpper) != nil {
+                correct(gUpper)
+            }
+            else {
+                incorrect(gUpper)
+            }
+        }
+    }
+    
+    func error(msg: String) {
+        let alert = UIAlertController(title: "Invalid Input!", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func correct(g: Character) {
         for i in phrase.characters.indices {
-            if phrase.uppercaseString[i] == g || phrase.lowercaseString[i] == g{
+            if phrase[i] == g {
                 puzzleString.removeAtIndex(i)
                 puzzleString.insert(phrase[i], atIndex: i)
             }
         }
         puzzle.text = puzzleString
+        guess.text = String()
     }
     
-    @IBAction func incorrectGuess(sender: UIButton) {
-        let g: Character = guess.text![guess.text!.startIndex]
+
+    func incorrect(g: Character) {
         var incGuesses: String = incorrectGuesses.text!
         incGuesses.appendContentsOf(" ")
         incGuesses.append(g)
