@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
     @IBOutlet var puzzle: UILabel!
     var puzzleString: String = String()
     var phrase: String = String()
+
+    var isPlaying = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,9 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func guess(sender: UIButton) {
+        if !isPlaying {
+            return
+        }
         let s: String = guess.text!
         if s.endIndex == s.startIndex {
             error("You have not entered a guess.")
@@ -79,6 +84,20 @@ class GameViewController: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func win() {
+        let alert = UIAlertController(title: "YOU WON!!!", message: "Click 'Start Over' to play a new game.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func lose() {
+        let alert = UIAlertController(title: "You lost :(", message: "Click 'Start Over' to try again.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func correct(g: Character) {
         for i in phrase.characters.indices {
             if phrase[i] == g {
@@ -88,6 +107,10 @@ class GameViewController: UIViewController {
         }
         puzzle.text = puzzleString
         guess.text = String()
+        if puzzleString.characters.indexOf("-") == nil {
+            win()
+            isPlaying = false
+        }
     }
     
 
@@ -104,6 +127,10 @@ class GameViewController: UIViewController {
         name.appendContentsOf(".gif")
         
         hangmanState.image = UIImage(named: name)
+        if stateNum == 7 {
+            lose()
+            isPlaying = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
