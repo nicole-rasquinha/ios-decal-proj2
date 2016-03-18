@@ -147,6 +147,7 @@ class GameViewController: UIViewController {
         hangmanState.image = UIImage(named: name)
         if stateNum == 7 {
             lose()
+            puzzle.text = phrase
             isPlaying = false
         }
     }
